@@ -79,10 +79,7 @@ public class Employee {
 
     public static void increaseSalary(List<Employee> employees,int amount,int age){
         List<Employee> temp =
-                employees.stream().filter(e-> e.getAge()>age).toList();
-        for (Employee item:temp){
-            item.setSalary(item.getSalary()+amount);
-        }
+                employees.stream().filter(e-> e.getAge()>age).peek(x->x.setSalary(x.getSalary()+amount)).toList();
     }
     public static void compare(int yearFirst, int monthFirst, int dayFirst, int yearSecond, int monthSecond, int daySecond){
         LocalDate first = LocalDate.of(yearFirst, monthFirst,dayFirst);
